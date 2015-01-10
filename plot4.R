@@ -8,13 +8,24 @@ plot4 <- function() {
     ## 
     datafile <- "household_power_consumption.txt"
     
-    ## Read the entire file and keep only the dates we want.
-    ##
-    data <- read.csv(datafile,
-                     sep = ";", 
-                     stringsAsFactors = FALSE,
-                     na.strings = "?")
-    data <- data[data$Date %in% c("1/2/2007","2/2/2007"), ]
+    ## Experiment with saving a local subset file to speed up loading the data
+    ## on subsequent runs.  The idea came from the course discussion forum.
+    ## 
+    subsetfile <- "subsetData.Rd"
+    if (file.exists(subsetfile)) {
+    	load(subsetfile)
+    } else {
+    	
+	    ## Read the entire file and keep only the dates we want.
+	    ##
+	    data <- read.csv(datafile,
+	                     sep = ";", 
+	                     stringsAsFactors = FALSE,
+	                     na.strings = "?")
+	    data <- data[data$Date %in% c("1/2/2007","2/2/2007"), ]
+	    
+	    save(data, file = subsetfile)
+    }
     
     ## Create a Date/Time object column out of the text Date and Time columns.
     ##
