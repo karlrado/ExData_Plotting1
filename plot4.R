@@ -1,4 +1,4 @@
-plot2 <- function() {
+plot4 <- function() {
     
     ## Data File:
     ## - Download from 
@@ -22,10 +22,36 @@ plot2 <- function() {
     
     ## Create the plot.
     ##
-    png("plot2.png")
+    png("plot4.png")
+    par(mfrow = c(2,2))
+
     plot(data$DateTime, data$Global_active_power,
          type = "l",
          xlab = "",
-         ylab = "Global Active Power (kilowatts)")
+         ylab = "Global Active Power")
+    
+    plot(data$DateTime, data$Voltage,
+         type = "l",
+         xlab = "datetime",
+         ylab = "Voltage")
+    
+    plot(data$DateTime, data$Sub_metering_1,
+         type = "l",
+         xlab = "",
+         ylab = "Energy sub metering")
+    lines(data$DateTime, data$Sub_metering_2, col = "red")
+    lines(data$DateTime, data$Sub_metering_3, col = "blue")
+    legend("topright",
+           lwd = 1,
+           bty = "n",
+           col = c("black", "red", "blue"),
+           legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+    
+    plot(data$DateTime, data$Global_reactive_power,
+         type = "l",
+         xlab = "datetime",
+         ylab = "Global_reactive_power")
+    
+    par(mfrow = c(1,1))
     dev <- dev.off()
 }
