@@ -1,10 +1,10 @@
 plot1 <- function() {
     
     ## Data File:
-    ## - Download from 
+    ## - Download from:
     ## https://d396qusza40orc.cloudfront.net/exdata/data/household_power_consumption.zip
-    ## - Unzip the zip file
-    ## - Make sure the file is in the same folder as this script
+    ## - Unzip the zip file.
+    ## - Make sure the file is in the same folder as this script.
     ## 
     datafile <- "household_power_consumption.txt"
     
