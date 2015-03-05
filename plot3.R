@@ -23,7 +23,7 @@ plot3 <- function() {
     	data <- data[data$Date %in% c("1/2/2007","2/2/2007"), ]
     	save(data, file = subsetfile)
     } else {
-    	## Load the saved file (much faster)
+    	## Load the saved file (much faster).
     	##
     	load(subsetfile)
     }
