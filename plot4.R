@@ -14,18 +14,18 @@ plot4 <- function() {
     ## 
     subsetfile <- "household_power_consumption_subset.Rd"
     if (!file.exists(subsetfile)) {
-    	## Read the entire file, keep only the dates we want, and save the data to a file.
-    	##
-    	data <- read.csv(datafile,
-    					 sep = ";", 
-    					 stringsAsFactors = FALSE,
-    					 na.strings = "?")
-    	data <- data[data$Date %in% c("1/2/2007","2/2/2007"), ]
-    	save(data, file = subsetfile)
+        ## Read the entire file, keep only the dates we want, and save the data to a file.
+        ##
+        data <- read.csv(datafile,
+                         sep = ";", 
+                         stringsAsFactors = FALSE,
+                         na.strings = "?")
+        data <- data[data$Date %in% c("1/2/2007","2/2/2007"), ]
+        save(data, file = subsetfile)
     } else {
-    	## Load the saved file (much faster).
-    	##
-    	load(subsetfile)
+        ## Load the saved file (much faster).
+        ##
+        load(subsetfile)
     }
     
     ## Create a Date/Time object column out of the text Date and Time columns.
